@@ -1,4 +1,4 @@
-﻿@layer properties {
+@layer properties {
     @supports (((-webkit-hyphens:none)) and (not (margin-trim:inline))) or ((-moz-orient:inline) and (not (color:rgb(from red r g b)))) {
         *, :before, :after, ::backdrop {
             --tw-translate-x: 0;
@@ -6936,5 +6936,131 @@ body.cloaker-protected {
 
     .lg\:block {
         display: block !important
+    }
+}
+
+/* Premium landing redesign overrides */
+:root {
+    --premium-bg: #06070d;
+    --premium-card: rgba(18, 20, 31, .78);
+    --premium-border: rgba(255, 255, 255, .12);
+    --premium-text: #f8fafc;
+    --premium-muted: #a7adbb;
+    --premium-pink: #ff2f7d;
+    --premium-purple: #7c3cff;
+    --premium-orange: #ff9f2f;
+}
+
+html, body {
+    min-height: 100%;
+    background:
+        radial-gradient(circle at 18% 12%, rgba(255, 47, 125, .28), transparent 32%),
+        radial-gradient(circle at 82% 0%, rgba(124, 60, 255, .32), transparent 34%),
+        linear-gradient(180deg, #080911 0%, var(--premium-bg) 45%, #05060a 100%) !important;
+    color: var(--premium-text);
+}
+
+body::before {
+    content: "";
+    pointer-events: none;
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    background:
+        linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.028) 1px, transparent 1px);
+    background-size: 44px 44px;
+    mask-image: linear-gradient(to bottom, rgba(0,0,0,.75), transparent 72%);
+}
+
+body::after {
+    content: "";
+    pointer-events: none;
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    background: linear-gradient(115deg, transparent 0 34%, rgba(255,255,255,.08) 44%, transparent 54% 100%);
+    opacity: .35;
+}
+
+.glass-card, .cta-profile-card, .stalkea-ext-card, .stalkea-ext-panel {
+    background: linear-gradient(180deg, rgba(255,255,255,.105), rgba(255,255,255,.045)) !important;
+    border: 1px solid var(--premium-border) !important;
+    border-radius: 28px !important;
+    box-shadow: 0 28px 90px rgba(0,0,0,.42), inset 0 1px 0 rgba(255,255,255,.16) !important;
+    backdrop-filter: blur(26px) saturate(150%) !important;
+    -webkit-backdrop-filter: blur(26px) saturate(150%) !important;
+}
+
+.cta-container {
+    max-width: 540px;
+    padding-inline: clamp(16px, 5vw, 28px);
+}
+
+.cta-main-title {
+    letter-spacing: -.045em;
+    text-wrap: balance;
+    text-shadow: 0 14px 46px rgba(0,0,0,.55);
+}
+
+.cta-gradient, .instagram-gradient {
+    background: linear-gradient(120deg, #ffb45f 0%, #ff2f7d 38%, #9b5cff 68%, #46d5ff 100%) !important;
+    background-size: 180% 180% !important;
+}
+
+.btn-primary, .stalkea-ext-btn-primary {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,.2) !important;
+    background: linear-gradient(135deg, var(--premium-orange), var(--premium-pink) 48%, var(--premium-purple)) !important;
+    box-shadow: 0 18px 46px rgba(255,47,125,.32), 0 6px 18px rgba(124,60,255,.25), inset 0 1px 0 rgba(255,255,255,.32) !important;
+    transform: translateZ(0);
+}
+
+.btn-primary::before, .stalkea-ext-btn-primary::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,.32), transparent);
+    transform: translateX(-120%);
+    animation: premium-button-shine 3.2s ease-in-out infinite;
+}
+
+.input-dark, input[type=text]:not(.password-input) {
+    background: rgba(255,255,255,.075) !important;
+    border: 1px solid rgba(255,255,255,.12) !important;
+    border-radius: 18px !important;
+    color: #fff !important;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.08), 0 14px 34px rgba(0,0,0,.24) !important;
+}
+
+.input-dark:focus, input[type=text]:not(.password-input):focus {
+    border-color: rgba(255,47,125,.65) !important;
+    box-shadow: 0 0 0 4px rgba(255,47,125,.14), 0 18px 38px rgba(0,0,0,.3) !important;
+}
+
+.cta-profile-card-avatar-border {
+    padding: 3px;
+    box-shadow: 0 0 0 5px rgba(255,47,125,.1), 0 14px 34px rgba(124,60,255,.22);
+}
+
+.cta-profile-card-badge, .error-message, .stalkea-ext-analysis-row {
+    background: rgba(255,255,255,.075) !important;
+    border: 1px solid rgba(255,255,255,.1) !important;
+    border-radius: 18px !important;
+}
+
+@keyframes premium-button-shine {
+    0%, 42% { transform: translateX(-120%); }
+    60%, 100% { transform: translateX(120%); }
+}
+
+@media (max-width: 520px) {
+    .glass-card, .cta-profile-card, .stalkea-ext-card, .stalkea-ext-panel {
+        border-radius: 22px !important;
+    }
+
+    .cta-container {
+        padding-top: 34px;
     }
 }
