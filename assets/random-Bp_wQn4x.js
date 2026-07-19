@@ -1,1 +1,7 @@
-export function randomBetween(a=0,b=1){return Math.floor(Math.random()*(b-a+1))+a} export default randomBetween;
+export function randomBetween(min = 0, max = 1) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+export function pickRandom(items = []) {
+  return items[Math.floor(Math.random() * items.length)];
+}
+export default randomBetween;
